@@ -46,8 +46,13 @@ public class GumballMachineService {
         this.gumballSoldState = new GumballSoldState(this);
         this.outOfGumballState = new OutOfGumballState(this);
         this.winnerState = new WinnerState(this);
-        this.currentState = noQuarterState;
 
+        if(gumballAmount > 0) {
+            this.currentState = noQuarterState;
+        }
+        else {
+            this.currentState = outOfGumballState;
+        }
     }
 
     public void setState(State state) {
@@ -74,8 +79,8 @@ public class GumballMachineService {
     @Override
     public String toString() {
         String status;
-        if (gumballAmount == 0) {
-            status = "Machine is sold out";
+        if (gumballAmount <= 0) {
+            status = "Machine is sold out\n";
         } else {
             status = "Machine is waiting for quarter\n";
         }
