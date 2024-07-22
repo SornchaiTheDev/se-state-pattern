@@ -20,8 +20,7 @@ public class WinnerState implements State {
 
     @Override
     public void ejectQuarter() {
-        System.out.println("Quarter returned");
-        service.setState(service.getNoQuarterState());
+        System.out.println("You already turn the crank!");
     }
 
     @Override
